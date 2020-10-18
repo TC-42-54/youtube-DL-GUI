@@ -1,0 +1,17 @@
+{
+  "name": "youtube-dl-nwjs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nw src/",
+    "prod": "nwbuild --platforms win32,win64,osx64,linux32,linux64 --buildDir dist/ src/"
+  },
+  "devDependencies": {
+    "nw": "0.49.0-sdk",
+    "nw-builder": "^3.5.7"
+  },
+  "dependencies": {
+    "youtube-dl": "^3.0.2"
+  }
+}

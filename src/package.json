@@ -1,0 +1,16 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "main": "views/main.html",
+  "window": {
+    "title": "Youtube-DL Desktop",
+    "icon": "assets/icon.png",
+    "toolbar": true,
+    "width": 800,
+    "height": 600,
+    "min-width": 600,
+    "min-height": 600,
+    "position": "center"
+  },
+  "license": "MIT"
+}

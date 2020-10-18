@@ -1,0 +1,63 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Youtube-DL Desktop</title>
+  </head>
+  <body>
+    <h1>Youtube-DL</h1>
+    <div id="app-container">
+        <div id="error-modal" class="hide">
+
+        </div>
+        <div id="success-modal" class="hide">
+
+        </div>
+        <div id="download-wait" class="hide">
+            <p>
+                Downloading...
+            </p>
+        </div>
+        <div id="youtube-url-container" class="youtube-url-container step step-1">
+            <input id="youtube-url" type="url" placeholder="Enter a YouTube video URL" />
+            <button id="video-url-validation" type="button">Next Step</button>
+        </div>
+        <div id="format-selection-container" class="format-selection-container step step-2">
+            <select id="format-selection"></select>
+            <button id="format-validation" type="button">Next Step</button>
+        </div>
+        <div id="folder-destination-container" class="folder-destination-container step step-3">
+            <div class="folder-path-selection">
+                <input id="folder-path" type="text" disabled placeholder="Select a place to download the video" />
+                <button id="path-selection" type="button">Select a folder</button>
+            </div>
+            <input id="folder-path-input" type="file" class="hide" nwdirectory />
+            <button id="path-validation" type="button">Next Step</button>
+        </div>
+        <div id="filename-container" class="filename-container step step-4">
+            <input id="filename" type="text" placeholder="Enter a filename for your video" />
+            <button id="filename-validation" type="button">Next Step</button>
+        </div>
+        <div class="download-launch-container step step-5">
+            <div class="download-summary-container">
+                <h3>Download Summary</h3>
+                <img class="summary-thumbnail-image" src="" />
+                <p class="summary-filename"></p>
+                <p class="summary-format"></p>
+            </div>
+            <button id="download-launch" type="button">
+                Launch download
+            </button>
+        </div>
+        <div id="download-list">
+            
+        </div>
+    </div>
+    <script type="module" src="../app/index.js"></script>
+  </body>
+</html>
+
