@@ -59,7 +59,8 @@ const steps = [
             if (selectedOption.value) {
                 selectedFormat = selectedOption.data.format
                 formatId = selectedOption.value
-                audioFormatId = getAudioFormatId(formats.filter(format => format.audioOnly), selectedFormat.fileFormat)
+                if (!selectedFormat.audioOnly)
+                    audioFormatId = getAudioFormatId(formats.filter(format => format.audioOnly), selectedFormat.fileFormat)
                 nextStep()
                 return true
             }
@@ -191,7 +192,11 @@ const launchDownload = e => {
     let success = true
     try {
         console.log('downloading');
-        execSync(path.resolve(__dirname, 'app','bin', 'youtube-dl').concat(' ', `--format=${formatId}+${audioFormatId} --ffmpeg-location "${path.resolve(__dirname, 'app','bin', 'ffmpeg')}" --merge-output-format ${selectedFormat.fileFormat} -o "${filePath}/${filename}.${selectedFormat.fileFormat}" --encoding utf8 ${videoURL}`))
+        if (selectedFormat.audioOnly) {
+            execSync(path.resolve(__dirname, 'app','bin', 'youtube-dl').concat(' ', `--format=${formatId} --audio-format mp3 -o "${filePath}/${filename}.${selectedFormat.fileFormat}" --encoding utf8 ${videoURL}`))
+        } else {
+            execSync(path.resolve(__dirname, 'app','bin', 'youtube-dl').concat(' ', `--format=${formatId}+${audioFormatId} --ffmpeg-location "${path.resolve(__dirname, 'app','bin', 'ffmpeg')}" --merge-output-format ${selectedFormat.fileFormat} -o "${filePath}/${filename}.${selectedFormat.fileFormat}" --encoding utf8 ${videoURL}`))
+        }
         downloadWaitingArea.classList.remove('show')
         downloadWaitingArea.classList.add('hide')
         successMessage('Your file was downloaded !')
